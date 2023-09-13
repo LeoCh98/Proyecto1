@@ -18,7 +18,10 @@
                 <a href="/Proyecto1/Jsp/Index.jsp">Home</a>
             </li>
             <li>
-                <a href="/Proyecto1/Jsp/Login/View.jsp">Login</a>
+                <a href="/Proyecto1/Jsp/Login/View.jsp">Login</a> <!-- Change to Jsp/Login/Show -->
+            </li>
+            <li>
+                <a href="/Proyecto1/Jsp/Signup/show">Sign up</a> <!-- Change to Jsp/Signup/Show -->
             </li>
             <li>
                 <a href="/Proyecto1/Jsp/About_us.jsp">About us</a>

@@ -14,6 +14,7 @@
         <div id="wrapper">
         <%@ include file = "Header.jsp" %>
         <h1>Welcome to GroupTasker...</h1>
+        <%@ include file = "Footer.jsp" %>
         </div>
     </body>
 </html>
