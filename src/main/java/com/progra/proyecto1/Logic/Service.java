@@ -48,6 +48,18 @@ public class Service {
         }
     }
 
+    public boolean validateLogin(String id, String password) {
+        boolean access = false;
+        try {
+            Student student = this.getStudentById(id);
+            if(student.getPassword().equals(password))
+                access = true;
+        } catch (SQLException | IOException ex) {
+            Logger.getLogger(Service.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return access;
+    }
+
     public List<Student> getAllStudents() throws SQLException, IOException {
         return studentDAO.listAll();
     }

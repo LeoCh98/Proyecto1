@@ -63,10 +63,14 @@ public class Controller extends HttpServlet {
         Service service = Service.instance();
         HttpSession session = request.getSession(true);
         try {
-            Student user = service.getStudentById(model.getCurrent().getId());//JAP
-            session.setAttribute("User", user);
-            
-            return "/Proyecto1/Presentation/About_us.jsp"; //Just a proof...
+            String id = model.getCurrent().getId();
+            if (service.validateLogin(id, model.getCurrent().getPassword())) {
+                Student user = service.getStudentById(id);
+                session.setAttribute("User", user);
+                return "/Presentation/About_us.jsp";
+            } else {
+                throw new RuntimeException();
+            }
         } catch (Exception ex) {
             Map<String, String> errors = new HashMap<>();
             request.setAttribute("errors", errors);
@@ -94,42 +98,20 @@ public class Controller extends HttpServlet {
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
-    /**
-     * Handles the HTTP <code>GET</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
     }
 
-    /**
-     * Handles the HTTP <code>POST</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
     }
 
-    /**
-     * Returns a short description of the servlet.
-     *
-     * @return a String containing servlet description
-     */
     @Override
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
-
 }

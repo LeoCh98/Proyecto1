@@ -3,9 +3,9 @@
     Created on : 12 Sep 2023, 23:09:17
     Author     : leoch
 --%>
-
+<%@page import="com.progra.proyecto1.Logic.Student"%>
 <%
-    //Student user = (Student) session.getAttribute("user");
+    Student user = (Student) session.getAttribute("user");
 %>
 <header>
     <div class="logo">
@@ -23,6 +23,11 @@
             <li>
                 <a href="/Proyecto1/Presentation/Signup/show">Sign up</a> <!-- Change to Jsp/Signup/Show -->
             </li>
+            <% if(user != null){ %>
+            <li>
+                <a href="Presentation/Logout/Logout">Logout</a>
+            </li>
+            <% } %>
             <li>
                 <a href="/Proyecto1/Presentation/About_us.jsp">About us</a>
             </li>
