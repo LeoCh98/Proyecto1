@@ -4,6 +4,8 @@
  */
 package com.progra.proyecto1.Logic;
 
+import java.sql.Timestamp;
+
 /**
  *
  * @author leoch
@@ -15,10 +17,13 @@ public class Student {
     private String name;
     private int sequence;
     private String password;
-    private String timeStamp; 
-    private Group group;
+    private Timestamp timeStamp; 
+    private int group;
+    
+    public Student(){
+    }
 
-    public Student(String id, int nrc, String lastname, String name, int sequence, String password, String timeStamp, Group group) {
+    public Student(String id, int nrc, String lastname, String name, int sequence, String password, Timestamp timeStamp, int group) {
         this.id = id;
         this.nrc = nrc;
         this.lastname = lastname;
@@ -77,19 +82,19 @@ public class Student {
         this.password = password;
     }
 
-    public String getTimeStamp() {
+    public Timestamp getTimeStamp() {
         return timeStamp;
     }
 
-    public void setTimeStamp(String timeStamp) {
+    public void setTimeStamp(Timestamp timeStamp) {
         this.timeStamp = timeStamp;
     }
 
-    public Group getGroup() {
+    public int getGroup() {
         return group;
     }
 
-    public void setGroup(Group group) {
+    public void setGroup(int group) {
         this.group = group;
     }
 
