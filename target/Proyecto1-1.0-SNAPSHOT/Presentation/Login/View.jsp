@@ -30,7 +30,9 @@
                         <div class="etiqueta">Password</div>
                         <div class="campo"><input class="<%=inError("passwordFld", errors)%>" placeholder="Password" type="password" name="passwordFld" value="<%=form.get("passwordFld")[0]%>" title="<%=title("passwordFld", errors)%>"></div>
                     </div>
-                    <div class="fila encabezado"><button  style="margin-bottom: 15px">Log In</button> </div>
+                    <div class="fila encabezado">
+                        <button class="btn-login">Log In</button>
+                    </div>
                 </div>
             </form>
             <%@ include file = "/Presentation/Footer.jsp" %>

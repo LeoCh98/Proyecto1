@@ -7,9 +7,11 @@ com\progra\proyecto1\Data\Dao\DAO.class
 com\progra\proyecto1\JakartaRestConfiguration.class
 com\progra\proyecto1\resources\JakartaEE10Resource.class
 com\progra\proyecto1\Data\Dao\Crud\AbstractCRUD.class
+com\progra\proyecto1\Presentation\Menu\Model.class
 com\progra\proyecto1\Data\Dao\StudentDAO.class
 com\progra\proyecto1\Logic\Student.class
 com\progra\proyecto1\Data\Dao\Crud\StudentCRUD.class
 com\progra\proyecto1\Logic\Group.class
+com\progra\proyecto1\Presentation\Menu\Controller.class
 com\progra\proyecto1\Logic\Service.class
 com\progra\proyecto1\Data\Dao\GroupDAO.class

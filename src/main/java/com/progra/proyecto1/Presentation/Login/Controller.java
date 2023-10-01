@@ -38,6 +38,7 @@ public class Controller extends HttpServlet {
                 viewUrl = this.login(request);
                 break;
             case "/Presentation/Logout/Logout":
+                viewUrl = this.logout(request);
                 break;
         }
         request.getRequestDispatcher(viewUrl).forward(request, response);
@@ -67,9 +68,9 @@ public class Controller extends HttpServlet {
             if (service.validateLogin(id, model.getCurrent().getPassword())) {
                 Student user = service.getStudentById(id);
                 session.setAttribute("User", user);
-                return "/Presentation/About_us.jsp";
+                return "/Presentation/Menu/View.jsp";
             } else {
-                throw new RuntimeException();
+                throw new RuntimeException(); //throws just in case incorrect login
             }
         } catch (Exception ex) {
             Map<String, String> errors = new HashMap<>();
@@ -78,6 +79,17 @@ public class Controller extends HttpServlet {
             errors.put("passwordFld", "Invalid login, please try again...");
             return "/Presentation/Login/View.jsp";
         }
+    }
+    
+    public String logout(HttpServletRequest request) {
+        return this.logoutAction(request);
+    }
+
+    public String logoutAction(HttpServletRequest request) {
+        HttpSession session = request.getSession(true);
+        session.removeAttribute("User");
+        session.invalidate();
+        return "/Presentation/Index.jsp";
     }
 
     Map<String, String> validar(HttpServletRequest request) {

@@ -5,7 +5,7 @@
 --%>
 <%@page import="com.progra.proyecto1.Logic.Student"%>
 <%
-    Student user = (Student) session.getAttribute("user");
+    Student user = (Student) session.getAttribute("User");
 %>
 <header>
     <div class="logo">
@@ -17,13 +17,14 @@
             <li>
                 <a href="/Proyecto1/Presentation/Index.jsp">Home</a>
             </li>
+            <% if(user == null){ %>
             <li>
                 <a href="Presentation/Login/Show">Login</a>
             </li>
+            <% } else { %>
             <li>
-                <a href="/Proyecto1/Presentation/Signup/show">Sign up</a> <!-- Change to Jsp/Signup/Show -->
+                <a href ="Presentation/Update/Show"> User: <% out.print(user.getId()); %> </a>
             </li>
-            <% if(user != null){ %>
             <li>
                 <a href="Presentation/Logout/Logout">Logout</a>
             </li>
