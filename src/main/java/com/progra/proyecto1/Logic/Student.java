@@ -11,19 +11,20 @@ import java.sql.Timestamp;
  * @author leoch
  */
 public class Student {
+
     private String id;
     private int nrc;
     private String lastname;
     private String name;
     private int sequence;
     private String password;
-    private Timestamp timeStamp; 
-    private int group;
-    
-    public Student(){
+    private Timestamp timeStamp;
+    private Integer group;
+
+    public Student() {
     }
 
-    public Student(String id, int nrc, String lastname, String name, int sequence, String password, Timestamp timeStamp, int group) {
+    public Student(String id, int nrc, String lastname, String name, int sequence, String password, Timestamp timeStamp, Integer group) {
         this.id = id;
         this.nrc = nrc;
         this.lastname = lastname;
@@ -90,17 +91,17 @@ public class Student {
         this.timeStamp = timeStamp;
     }
 
-    public int getGroup() {
+    public Integer getGroup() {
         return group;
     }
 
-    public void setGroup(int group) {
+    public void setGroup(Integer group) {
         this.group = group;
     }
 
     @Override
     public String toString() {
-        return id + nrc + lastname + name + sequence + password + timeStamp + group ;
+        return id + nrc + lastname + name + sequence + password + timeStamp + group;
     }
-    
+
 }

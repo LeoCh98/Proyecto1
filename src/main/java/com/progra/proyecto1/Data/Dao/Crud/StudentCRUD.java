@@ -27,7 +27,7 @@ public class StudentCRUD extends AbstractCRUD {
 
     @Override
     public String getUpdateCmd() {
-        return "UPDATE `bd_grupos`.`estudiante` SET nrc = ?, apellidos = ?, nombre = ?, secuencia = ?, clave = ?, ultimo_acceso = ?, grupo_id = ? WHERE id = ?";
+        return "UPDATE `bd_grupos`.`estudiante` SET nrc = ?, apellidos = ?, nombre = ?, secuencia = ?, clave = ?, ultimo_acceso = ? WHERE id = ?";
     }
 
     @Override

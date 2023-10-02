@@ -14,16 +14,19 @@
     </div>
     <div class="menu">  
         <ul>
+            <% if(user == null){ %>
             <li>
                 <a href="/Proyecto1/Presentation/Index.jsp">Home</a>
             </li>
-            <% if(user == null){ %>
             <li>
                 <a href="Presentation/Login/Show">Login</a>
             </li>
             <% } else { %>
             <li>
-                <a href ="Presentation/Update/Show"> User: <% out.print(user.getId()); %> </a>
+                <a href="/Proyecto1/Presentation/Login/Menu.jsp">Home</a>
+            </li>
+            <li>
+                <a href ="Presentation/Update/Show"> User: <% out.print(user.getName()); %> </a>
             </li>
             <li>
                 <a href="Presentation/Logout/Logout">Logout</a>

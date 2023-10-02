@@ -11,6 +11,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Types;
 import java.util.ArrayList;
 import java.util.List;
 import javax.sql.DataSource;
@@ -59,8 +60,7 @@ public class StudentDAO extends AbstractDAO<String, Student> implements DAO<Stri
         stm.setInt(4, value.getSequence());
         stm.setString(5, value.getPassword());
         stm.setTimestamp(6, value.getTimeStamp());
-        stm.setInt(7, value.getGroup());
-        stm.setString(8, id);
+        stm.setString(7, id);
     }
 
     @Override

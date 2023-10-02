@@ -45,21 +45,17 @@ public class Controller extends HttpServlet {
     }
 
     private String login(HttpServletRequest request) {
-        try {
-            Map<String, String> errors = this.validar(request);
-            if (errors.isEmpty()) {
-                this.updateModel(request);
-                return this.loginAction(request);
-            } else {
-                request.setAttribute("errors", errors);
-                return "/Presentation/Login/View.jsp";
-            }
-        } catch (SQLException e) {
-            return "/Presentation/Error.jsp";
+        Map<String, String> errors = this.checkErrors(request);
+        if (errors.isEmpty()) {
+            this.updateModel(request);
+            return this.loginAction(request);
+        } else {
+            request.setAttribute("errors", errors);
+            return "/Presentation/Login/View.jsp";
         }
     }
 
-    public String loginAction(HttpServletRequest request) throws SQLException {
+    public String loginAction(HttpServletRequest request){
         Model model = (Model) request.getAttribute("model");
         Service service = Service.instance();
         HttpSession session = request.getSession(true);
@@ -68,7 +64,7 @@ public class Controller extends HttpServlet {
             if (service.validateLogin(id, model.getCurrent().getPassword())) {
                 Student user = service.getStudentById(id);
                 session.setAttribute("User", user);
-                return "/Presentation/Menu/View.jsp";
+                return "/Presentation/Login/Menu.jsp";
             } else {
                 throw new RuntimeException(); //throws just in case incorrect login
             }
@@ -92,7 +88,7 @@ public class Controller extends HttpServlet {
         return "/Presentation/Index.jsp";
     }
 
-    Map<String, String> validar(HttpServletRequest request) {
+    Map<String, String> checkErrors(HttpServletRequest request) {
         Map<String, String> errors = new HashMap<>();
         if (request.getParameter("usernameFld").isEmpty()) {
             errors.put("usernameFld", "Username required");

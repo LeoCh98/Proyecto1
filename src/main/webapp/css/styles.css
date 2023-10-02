@@ -93,7 +93,7 @@ footer {
     color: red;
 }
 
-.btn-login {
+.btn-form {
     margin-bottom: 10px;
     background-color: aqua;
     display: inline-block;
@@ -115,6 +115,6 @@ footer {
     flex-direction: column;
 }
 
-.btn-link:hover , .btn-login:hover{
+.btn-link:hover , .btn-form:hover{
     background-color: #00cccc;
 }

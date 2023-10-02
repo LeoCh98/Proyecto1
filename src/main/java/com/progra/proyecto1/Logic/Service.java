@@ -25,9 +25,13 @@ public class Service {
 
     private static Service uniqueInstance;
 
-    public static Service instance() throws SQLException {
+    public static Service instance() {
         if (uniqueInstance == null) {
-            uniqueInstance = new Service();
+            try {
+                uniqueInstance = new Service();
+            } catch (SQLException ex) {
+                Logger.getLogger(Service.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
         return uniqueInstance;
     }
