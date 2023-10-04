@@ -70,20 +70,23 @@ footer {
     background-color: rgba(0, 255, 255, 0.5);
 }
 
-.fila{
+.row{
     width:100%
 }
 
-.encabezado{
+.container{
     background-color: black;
     color:aqua;
     text-align:center;
     font-size: 1.8em;
 }
 
+.label{
+    width:20%;
+    display: flex;
+}
 
-
-.campo{
+.field{
     width:60%;
     padding: 5px;
     display:inline-block

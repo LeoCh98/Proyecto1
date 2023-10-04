@@ -21,16 +21,16 @@
             <% Map<String, String[]> form = (errors == null) ? this.getForm(model) : request.getParameterMap();%>
             <form name="form" action="Presentation/Login/Login" method="post" >
                 <div class="panel" style="margin-top: 250px;">
-                    <div class="fila encabezado">Login</div>
-                    <div class="fila">
-                        <div class="etiqueta">Username</div>
-                        <div class="campo"><input class="<%=inError("usernameFld", errors)%>" placeholder="Username" type="text" name="usernameFld" value="<%= (form.get("usernameFld")[0] != null) ? form.get("usernameFld")[0] : "" %>" title="<%=title("usernameFld", errors)%>"></div>
+                    <div class="row container">Login</div>
+                    <div class="row">
+                        <div class="label">Username</div>
+                        <div class="field"><input class="<%=inError("usernameFld", errors)%>" placeholder="Username" type="text" name="usernameFld" value="<%= (form.get("usernameFld")[0] != null) ? form.get("usernameFld")[0] : "" %>" title="<%=title("usernameFld", errors)%>"></div>
                     </div>
-                    <div class="fila">
-                        <div class="etiqueta">Password</div>
-                        <div class="campo"><input class="<%=inError("passwordFld", errors)%>" placeholder="Password" type="password" name="passwordFld" value="<%= (form.get("passwordFld")[0] != null) ? form.get("passwordFld")[0] : "" %>" title="<%=title("passwordFld", errors)%>"></div>
+                    <div class="row">
+                        <div class="label">Password</div>
+                        <div class="field"><input class="<%=inError("passwordFld", errors)%>" placeholder="Password" type="password" name="passwordFld" value="<%= (form.get("passwordFld")[0] != null) ? form.get("passwordFld")[0] : "" %>" title="<%=title("passwordFld", errors)%>"></div>
                     </div>
-                    <div class="fila encabezado">
+                    <div class="row container">
                         <button class="btn-form">Log In</button>
                     </div>
                 </div>

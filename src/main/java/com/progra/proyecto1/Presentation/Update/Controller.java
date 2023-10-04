@@ -13,6 +13,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -77,7 +78,7 @@ public class Controller extends HttpServlet {
             user.setPassword(model.getPassOne());
             service.updateStudent(user.getId(), user);
             return "/Presentation/Login/Menu.jsp";
-        } catch (Exception ex) {
+        } catch (IOException | SQLException ex) {
             Map<String, String> errors = new HashMap<>();
             request.setAttribute("errors", errors);
             errors.put("passOneFld", "Password required");

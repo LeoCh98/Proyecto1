@@ -23,16 +23,16 @@
             <% Map<String, String[]> form = (errors == null) ? this.getForm(model) : request.getParameterMap();%>
                     <form name="form" action="Presentation/Update/Update" method="post" >
                         <div class="panel" style="margin-top: 250px;">
-                            <div class="fila encabezado">Change or Reset Password</div>
-                            <div class="fila">
-                                <div class="etiqueta">New Password</div>
-                                <div class="campo"><input class="<%=inError("passOneFld", errors)%>" placeholder="Password" type="text" name="passOneFld" value="<%= (form.get("passOneFld")[0] != null) ? form.get("passOneFld")[0] : "" %>" title="<%=title("passOneFld", errors)%>"></div>
+                            <div class="row container">Change or Reset Password</div>
+                            <div class="row">
+                                <div class="label" style="display: inline-block;">New Password</div>
+                                <div class="field"><input class="<%=inError("passOneFld", errors)%>" placeholder="Password" type="text" name="passOneFld" value="<%= (form.get("passOneFld")[0] != null) ? form.get("passOneFld")[0] : "" %>" title="<%=title("passOneFld", errors)%>"></div>
                             </div>
-                            <div class="fila">
-                                <div class="etiqueta">Confirm Password</div>
-                                <div class="campo"><input class="<%=inError("passTwoFld", errors)%>" placeholder="Password" type="password" name="passTwoFld" value="<%= (form.get("passTwoFld")[0] != null) ? form.get("passTwoFld")[0] : "" %>" title="<%=title("passTwoFld", errors)%>"></div>
+                            <div class="row">
+                                <div class="label" style="display: inline-block;" >Confirm Password</div>
+                                <div class="field"><input class="<%=inError("passTwoFld", errors)%>" placeholder="Password" type="password" name="passTwoFld" value="<%= (form.get("passTwoFld")[0] != null) ? form.get("passTwoFld")[0] : "" %>" title="<%=title("passTwoFld", errors)%>"></div>
                             </div>
-                            <div class="fila encabezado">
+                            <div class="row container">
                                 <button class="btn-form">Save</button>
                             </div>
                         </div>   
