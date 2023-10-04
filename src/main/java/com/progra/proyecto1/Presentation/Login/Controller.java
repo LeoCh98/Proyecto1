@@ -55,7 +55,7 @@ public class Controller extends HttpServlet {
         }
     }
 
-    public String loginAction(HttpServletRequest request){
+    public String loginAction(HttpServletRequest request) {
         Model model = (Model) request.getAttribute("model");
         Service service = Service.instance();
         HttpSession session = request.getSession(true);
@@ -68,7 +68,7 @@ public class Controller extends HttpServlet {
             } else {
                 throw new RuntimeException(); //throws just in case incorrect login
             }
-        } catch (Exception ex) {
+        } catch (IOException | RuntimeException | SQLException ex) {
             Map<String, String> errors = new HashMap<>();
             request.setAttribute("errors", errors);
             errors.put("usernameFld", "Invalid login, please try again...");
@@ -76,7 +76,7 @@ public class Controller extends HttpServlet {
             return "/Presentation/Login/View.jsp";
         }
     }
-    
+
     public String logout(HttpServletRequest request) {
         return this.logoutAction(request);
     }
