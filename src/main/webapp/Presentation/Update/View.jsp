@@ -7,12 +7,11 @@
 <%@page import="java.util.HashMap"%>
 <%@page import="java.util.Map"%>
 
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <%@ include file = "/Presentation/Head.jsp" %>
+        <%@ include file = "/Presentation/Head.jsp" %>  
     </head>
     <body>
         <div id="wrapper">

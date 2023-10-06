@@ -5,5 +5,5 @@
 --%>
 
 <footer>
-    <h5> GroupTasker Inc. ©2023 GTR Inc.</h5>
+    <h5> GroupTasker Inc. ©2023 GT Inc.</h5>
 </footer>
