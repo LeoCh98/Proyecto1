@@ -4,6 +4,7 @@
  */
 package com.progra.proyecto1.Presentation.Menu;
 
+import com.progra.proyecto1.Logic.Group;
 import com.progra.proyecto1.Logic.Student;
 import java.util.ArrayList;
 import java.util.List;
@@ -15,8 +16,8 @@ import java.util.List;
 public class Model {
 
     List<Student> students;
-    Student current;
-
+    Group current;
+    
     public Model() {
         this.reset();
     }
@@ -24,14 +25,14 @@ public class Model {
     public void reset() {
         List<Student> students = new ArrayList<>();
         this.setStudents(students);
-        setCurrent(new Student());
+        setCurrent(new Group());
     }
 
-    public Student getCurrent() {
+    public Group getCurrent() {
         return current;
     }
 
-    public void setCurrent(Student current) {
+    public void setCurrent(Group current) {
         this.current = current;
     }
 

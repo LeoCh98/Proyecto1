@@ -9,6 +9,7 @@ package com.progra.proyecto1.Logic;
  * @author leoch
  */
 public class Group {
+
     private int id;
     private int sequence;
     private String name;
@@ -16,14 +17,13 @@ public class Group {
     private boolean active;
 
     public Group() {
-        
     }
 
     public Group(int id, int sequence, String name, int capacity, boolean active) {
-        this.id = id;
+        this.setId(id);
         this.sequence = sequence;
         this.name = name;
-        this.capacity  = capacity ;
+        this.capacity = capacity;
         this.active = active;
     }
 
@@ -55,11 +55,11 @@ public class Group {
         return capacity;
     }
 
-    public void setCapacity (int capacity ) {
-        this.capacity  = capacity ;
+    public void setCapacity(int capacity) {
+        this.capacity = capacity;
     }
 
-    public boolean isActive(){
+    public boolean isActive() {
         return active;
     }
 

@@ -11,7 +11,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Types;
 import java.util.ArrayList;
 import java.util.List;
 import javax.sql.DataSource;
@@ -41,8 +40,8 @@ public class StudentDAO extends AbstractDAO<String, Student> implements DAO<Stri
     }
 
     @Override
-    public void setAddParameters(PreparedStatement stm, String id, Student value) throws SQLException {
-        stm.setString(1, id);
+    public void setAddParameters(PreparedStatement stm, Student value) throws SQLException {
+        stm.setString(1, value.getId());
         stm.setInt(2, value.getNrc());
         stm.setString(3, value.getLastname());
         stm.setString(4, value.getName());
@@ -77,13 +76,13 @@ public class StudentDAO extends AbstractDAO<String, Student> implements DAO<Stri
     }
 
     @Override
-    public void add(String id, Student value) throws SQLException, IOException {
+    public void add(Student value) throws SQLException, IOException {
         try (Connection cnx = db.getConnection();
              PreparedStatement stm = cnx.prepareStatement(getCRUD().getAddCmd())) {
             stm.clearParameters();
-            setAddParameters(stm, id, value);
+            setAddParameters(stm, value);
             if (stm.executeUpdate() != 1) {
-                throw new IllegalArgumentException(id.toString());
+                throw new IllegalArgumentException(value.toString());
             }
         }
     }

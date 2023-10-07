@@ -12,6 +12,8 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -19,32 +21,56 @@ import java.util.logging.Logger;
  *
  * @author leoch
  */
-@WebServlet(name = "ControllerMenu", urlPatterns = {"/Presentation/Menu/Create", "/Presentation/Menu/Groups", "/Presentation/Menu/Users"})
+@WebServlet(name = "ControllerMenu", urlPatterns = {"/Presentation/Menu/Create", "/Presentation/Menu/SaveGroup", "/Presentation/Menu/Groups", "/Presentation/Menu/Users"})
 public class Controller extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-
         request.setAttribute("model", new Model());
-
         String viewUrl = "";
         switch (request.getServletPath()) {
             case "/Presentation/Menu/Create":
-                //
+                viewUrl = "/Presentation/Menu/Create.jsp";
+                break;
+            case "/Presentation/Menu/SaveGroup":
+                viewUrl = this.save(request);
                 break;
             case "/Presentation/Menu/Groups":
-                //
+                //viewUrl = this.
                 break;
             case "/Presentation/Menu/Users":
-                viewUrl = this.show(request);
+                viewUrl = this.showUsers(request);
                 break;
         }
         request.getRequestDispatcher(viewUrl).forward(request, response);
     }
 
-    public String show(HttpServletRequest request) {
-        return this.showUsers(request);
+    public String save(HttpServletRequest request) {
+        try {
+            Map<String, String> errors = this.checkErrors(request);
+            if (errors.isEmpty()) {
+                this.updateModel(request);
+                return this.saveAction(request);
+            } else {
+                request.setAttribute("errors", errors);
+                return "/Presentation/Menu/Create.jsp";
+            }
+        } catch (Exception e) {
+            return "/Presentation/Error.jsp";
+        }
+    }
+
+    public String saveAction(HttpServletRequest request) {
+        Model model = (Model) request.getAttribute("model");
+        Service service = Service.instance();
+        try {
+            service.addGroup(model.getCurrent());
+            return "/Presentation/Login/Menu.jsp";
+        } catch (IOException | SQLException ex) {
+            Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);
+            return "";
+        }
     }
 
     public String showUsers(HttpServletRequest request) {
@@ -57,6 +83,19 @@ public class Controller extends HttpServlet {
             Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);
             return "";
         }
+    }
+
+    public Map<String, String> checkErrors(HttpServletRequest request) {
+        Map<String, String> errors = new HashMap<>();
+        if (request.getParameter("groupNameFld").isEmpty()) {
+            errors.put("groupNameFld", "Group Name required");
+        }
+        return errors;
+    }
+
+    void updateModel(HttpServletRequest request) {
+        Model model = (Model) request.getAttribute("model");
+        model.getCurrent().setName((request.getParameter("groupNameFld")));
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

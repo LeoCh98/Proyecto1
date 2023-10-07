@@ -40,13 +40,13 @@ public abstract class AbstractDAO<K, V> implements DAO<K, V> {
     }
 
     @Override
-    public void add(K id, V value) throws SQLException, IOException {
+    public void add(V value) throws SQLException, IOException {
         try (Connection cnx = db.getConnection();
                 PreparedStatement stm = cnx.prepareStatement(getCRUD().getAddCmd())) {
             stm.clearParameters();
-            setAddParameters(stm, id, value);
+            setAddParameters(stm, value);
             if (stm.executeUpdate() != 1) {
-                throw new IllegalArgumentException(id.toString());
+                throw new IllegalArgumentException(value.toString());
             }
         }
     }
@@ -95,7 +95,7 @@ public abstract class AbstractDAO<K, V> implements DAO<K, V> {
 
     public abstract V getRecord(ResultSet rs) throws SQLException;
 
-    public abstract void setAddParameters(PreparedStatement stm, K id, V value)
+    public abstract void setAddParameters(PreparedStatement stm, V value)
             throws SQLException;
 
     public abstract void setUpdateParameters(PreparedStatement stm, K id, V value)

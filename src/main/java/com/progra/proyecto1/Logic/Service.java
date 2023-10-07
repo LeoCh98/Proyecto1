@@ -69,8 +69,8 @@ public class Service {
         return studentDAO.listAll();
     }
 
-    public void addStudent(String id, Student student) throws SQLException, IOException {
-        studentDAO.add(id, student);
+    public void addStudent(Student student) throws SQLException, IOException {
+        studentDAO.add(student);
     }
 
     public Student getStudentById(String id) throws SQLException, IOException {
@@ -89,8 +89,8 @@ public class Service {
         return groupDAO.listAll();
     }
 
-    public void addGroup(Integer id, Group group) throws SQLException, IOException {
-        groupDAO.add(id, group);
+    public void addGroup(Group group) throws SQLException, IOException {
+        groupDAO.add(group);
     }
 
     public Group getGroupById(Integer id) throws SQLException, IOException {

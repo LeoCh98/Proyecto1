@@ -22,7 +22,7 @@ public interface DAO<K, V> { // Data Access Object (Interface)
     // U(pdate)     M(odificar)
     // D(elete)     E(liminar)
     
-    public void add(K id, V value) throws SQLException, IOException;
+    public void add(V value) throws SQLException, IOException;
 
     public V retrieve(K id) throws SQLException, IOException;
 

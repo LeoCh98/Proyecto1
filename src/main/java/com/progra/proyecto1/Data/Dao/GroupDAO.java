@@ -35,14 +35,10 @@ public class GroupDAO extends AbstractDAO<Integer, Group> implements DAO<Integer
             rs.getBoolean("activo")
         );
     }
-
+    
     @Override
-    public void setAddParameters(PreparedStatement stm, Integer id, Group value) throws SQLException {
-        stm.setInt(1, id);
-        stm.setInt(2, value.getSequence());
-        stm.setString(3, value.getName());
-        stm.setInt(4, value.getCapacity());
-        stm.setBoolean(5, value.isActive());
+    public void setAddParameters(PreparedStatement stm, Group value) throws SQLException {
+        stm.setString(1, value.getName());
     }
 
     @Override
@@ -68,13 +64,13 @@ public class GroupDAO extends AbstractDAO<Integer, Group> implements DAO<Integer
     }
 
     @Override
-    public void add(Integer id, Group value) throws SQLException, IOException {
+    public void add(Group value) throws SQLException, IOException {
         try (Connection cnx = db.getConnection();
              PreparedStatement stm = cnx.prepareStatement(getCRUD().getAddCmd())) {
             stm.clearParameters();
-            setAddParameters(stm, id, value);
+            setAddParameters(stm, value);
             if (stm.executeUpdate() != 1) {
-                throw new IllegalArgumentException(id.toString());
+                throw new IllegalArgumentException(value.toString());
             }
         }
     }

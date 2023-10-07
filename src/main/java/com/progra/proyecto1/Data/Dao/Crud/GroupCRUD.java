@@ -17,7 +17,7 @@ public class GroupCRUD extends AbstractCRUD {
 
     @Override
     public String getAddCmd() {
-        return "INSERT INTO `bd_grupos`.`grupo` (secuencia, nombre, cupo, activo) VALUES (?, ?, ?, ?)";
+        return "INSERT INTO `bd_grupos`.`grupo` (nombre) VALUES (?)";
     }
 
     @Override
