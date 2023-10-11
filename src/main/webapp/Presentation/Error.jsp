@@ -6,12 +6,15 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html>
+<html lang="en">
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <%@ include file = "Head.jsp" %>
     </head>
     <body>
-        <h1>Error World!</h1>
+        <div id="wrapper">
+        <%@ include file = "Header.jsp" %>
+        <h1>Error...</h1>
+        <%@ include file = "Footer.jsp" %>
+        </div>
     </body>
 </html>

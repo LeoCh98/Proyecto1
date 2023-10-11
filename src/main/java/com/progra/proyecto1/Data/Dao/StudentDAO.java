@@ -28,14 +28,14 @@ public class StudentDAO extends AbstractDAO<String, Student> implements DAO<Stri
     @Override
     public Student getRecord(ResultSet rs) throws SQLException {
         return new Student(
-            rs.getString("id"),
-            rs.getInt("nrc"),
-            rs.getString("apellidos"),
-            rs.getString("nombre"),
-            rs.getInt("secuencia"),
-            rs.getString("clave"),
-            rs.getTimestamp("ultimo_acceso"),
-            rs.getInt("grupo_id")
+                rs.getString("id"),
+                rs.getInt("nrc"),
+                rs.getString("apellidos"),
+                rs.getString("nombre"),
+                rs.getInt("secuencia"),
+                rs.getString("clave"),
+                rs.getTimestamp("ultimo_acceso"),
+                rs.getInt("grupo_id")
         );
     }
 
@@ -65,9 +65,7 @@ public class StudentDAO extends AbstractDAO<String, Student> implements DAO<Stri
     @Override
     public List<Student> listAll() throws SQLException, IOException {
         List<Student> students = new ArrayList<>();
-        try (Connection cnx = db.getConnection();
-             PreparedStatement stm = cnx.prepareStatement(getCRUD().getListAllCmd());
-             ResultSet rs = stm.executeQuery()) {
+        try (Connection cnx = db.getConnection(); PreparedStatement stm = cnx.prepareStatement(getCRUD().getListAllCmd()); ResultSet rs = stm.executeQuery()) {
             while (rs.next()) {
                 students.add(getRecord(rs));
             }
@@ -77,8 +75,7 @@ public class StudentDAO extends AbstractDAO<String, Student> implements DAO<Stri
 
     @Override
     public void add(Student value) throws SQLException, IOException {
-        try (Connection cnx = db.getConnection();
-             PreparedStatement stm = cnx.prepareStatement(getCRUD().getAddCmd())) {
+        try (Connection cnx = db.getConnection(); PreparedStatement stm = cnx.prepareStatement(getCRUD().getAddCmd())) {
             stm.clearParameters();
             setAddParameters(stm, value);
             if (stm.executeUpdate() != 1) {
@@ -90,8 +87,7 @@ public class StudentDAO extends AbstractDAO<String, Student> implements DAO<Stri
     @Override
     public Student retrieve(String id) throws SQLException, IOException {
         Student student = null;
-        try (Connection cnx = db.getConnection();
-             PreparedStatement stm = cnx.prepareStatement(getCRUD().getRetrieveCmd())) {
+        try (Connection cnx = db.getConnection(); PreparedStatement stm = cnx.prepareStatement(getCRUD().getRetrieveCmd())) {
             stm.clearParameters();
             stm.setObject(1, id);
             try (ResultSet rs = stm.executeQuery()) {
@@ -107,8 +103,7 @@ public class StudentDAO extends AbstractDAO<String, Student> implements DAO<Stri
 
     @Override
     public void update(String id, Student value) throws SQLException, IOException {
-        try (Connection cnx = db.getConnection();
-             PreparedStatement stm = cnx.prepareStatement(getCRUD().getUpdateCmd())) {
+        try (Connection cnx = db.getConnection(); PreparedStatement stm = cnx.prepareStatement(getCRUD().getUpdateCmd())) {
             stm.clearParameters();
             setUpdateParameters(stm, id, value);
             if (stm.executeUpdate() != 1) {
@@ -119,8 +114,7 @@ public class StudentDAO extends AbstractDAO<String, Student> implements DAO<Stri
 
     @Override
     public void delete(String id) throws SQLException, IOException {
-        try (Connection cnx = db.getConnection();
-             PreparedStatement stm = cnx.prepareStatement(getCRUD().getDeleteCmd())) {
+        try (Connection cnx = db.getConnection(); PreparedStatement stm = cnx.prepareStatement(getCRUD().getDeleteCmd())) {
             stm.clearParameters();
             stm.setObject(1, id);
             if (stm.executeUpdate() != 1) {
