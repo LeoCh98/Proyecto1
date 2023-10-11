@@ -8,4 +8,5 @@
 <link rel="shortcut icon" href="/Proyecto1/Images/favicon.png" type="image/x-icon">
 <link href="/Proyecto1/css/styles.css" rel="stylesheet" type="text/css"/>
 <link href="/Proyecto1/css/menu.css" rel="stylesheet" type="text/css"/>
+<link href="/Proyecto1/css/table.css" rel="stylesheet" type="text/css"/>
 <title>GroupTasker</title>
