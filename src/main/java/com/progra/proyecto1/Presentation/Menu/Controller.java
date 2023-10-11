@@ -37,7 +37,7 @@ public class Controller extends HttpServlet {
                 viewUrl = this.save(request);
                 break;
             case "/Presentation/Menu/Groups":
-                //viewUrl = this.
+                viewUrl = this.showGroups(request);
                 break;
             case "/Presentation/Menu/Users":
                 viewUrl = this.showUsers(request);
@@ -46,6 +46,18 @@ public class Controller extends HttpServlet {
         request.getRequestDispatcher(viewUrl).forward(request, response);
     }
 
+    public String showGroups(HttpServletRequest request) {
+        Model model = (Model) request.getAttribute("model");
+        Service service = Service.instance();
+        try {
+            model.setGroups(service.getAllGroups());
+            return "/Presentation/Menu/Groups.jsp";
+        } catch (IOException | SQLException ex) {
+            Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);
+            return "";
+        }
+    }
+    
     public String save(HttpServletRequest request) {
         try {
             Map<String, String> errors = this.checkErrors(request);

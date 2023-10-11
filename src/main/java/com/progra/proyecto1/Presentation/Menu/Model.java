@@ -16,8 +16,9 @@ import java.util.List;
 public class Model {
 
     List<Student> students;
+    List<Group> groups;
     Group current;
-    
+
     public Model() {
         this.reset();
     }
@@ -28,19 +29,27 @@ public class Model {
         setCurrent(new Group());
     }
 
-    public Group getCurrent() {
-        return current;
-    }
-
-    public void setCurrent(Group current) {
-        this.current = current;
-    }
-
     public List<Student> getStudents() {
         return students;
     }
 
     public void setStudents(List<Student> students) {
         this.students = students;
+    }
+
+    public List<Group> getGroups() {
+        return groups;
+    }
+
+    public void setGroups(List<Group> groups) {
+        this.groups = groups;
+    }
+
+    public Group getCurrent() {
+        return current;
+    }
+
+    public void setCurrent(Group current) {
+        this.current = current;
     }
 }

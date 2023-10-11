@@ -32,7 +32,7 @@ public class GroupDAO extends AbstractDAO<Integer, Group> implements DAO<Integer
             rs.getInt("secuencia"),
             rs.getString("nombre"),
             rs.getInt("cupo"),
-            rs.getBoolean("activo")
+            true//All Groups have to be active
         );
     }
     
