@@ -54,40 +54,36 @@ public class Controller extends HttpServlet {
         Service service = Service.instance();
         try {
             model.setGroups(service.getAllGroups());
+            model.setStudents(service.getAllStudents());
             return "/Presentation/Menu/Groups.jsp";
         } catch (IOException | SQLException ex) {
             Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);
             return "";
         }
     }
-    
+
     public String save(HttpServletRequest request) {
-        try {
-            Map<String, String> errors = this.checkErrors(request);
-            if (errors.isEmpty()) {
-                this.updateModel(request);
-                return this.saveAction(request);
-            } else {
-                request.setAttribute("errors", errors);
-                return "/Presentation/Menu/Create.jsp";
-            }
-        } catch (Exception e) {
-            return "/Presentation/Error.jsp";
+        HttpSession session = request.getSession(true);
+        Model model = (Model) request.getAttribute("model");
+        model.setCurrentStudent((Student) session.getAttribute("User"));
+        Map<String, String> errors = this.checkErrors(request);
+        if (errors.isEmpty()) {
+            this.updateModel(request);
+            return this.saveAction(request);
+        } else {
+            request.setAttribute("errors", errors);
+            return "/Presentation/Menu/Create.jsp";
         }
     }
 
     public String saveAction(HttpServletRequest request) {
         Model model = (Model) request.getAttribute("model");
-        HttpSession session = request.getSession(true);
         Service service = Service.instance();
         try {
-            model.setCurrentStudent((Student)session.getAttribute("User"));
             Group group = service.addGroup(model.getCurrentGroup());
             model.setGroups(service.getAllGroups());
-            
-            
+            model.setStudents(service.getAllStudents());
             service.addGroupToStudent(model.getCurrentStudent(), group.getId());
-            
             return "/Presentation/Login/Menu.jsp";
         } catch (IOException | SQLException ex) {
             Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);
@@ -101,6 +97,7 @@ public class Controller extends HttpServlet {
         try {
             model.setStudents(service.getAllStudents());
             return "/Presentation/Menu/Users.jsp";
+
         } catch (IOException | SQLException ex) {
             Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);
             return "";
@@ -109,8 +106,12 @@ public class Controller extends HttpServlet {
 
     public Map<String, String> checkErrors(HttpServletRequest request) {
         Map<String, String> errors = new HashMap<>();
+        Model model = (Model) request.getAttribute("model");
         if (request.getParameter("groupNameFld").isEmpty()) {
             errors.put("groupNameFld", "Group Name required");
+        }
+        if (model.getCurrentStudent().getGroup() != 0) {
+            errors.put("groupNameFld", "You already have a group");
         }
         return errors;
     }

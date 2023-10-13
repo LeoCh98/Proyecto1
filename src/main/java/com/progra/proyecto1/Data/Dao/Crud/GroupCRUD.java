@@ -32,7 +32,7 @@ public class GroupCRUD extends AbstractCRUD {
 
     @Override
     public String getUpdateCmd() {
-        return "UPDATE `bd_grupos`.`grupo` SET secuencia = ?, nombre = ?, cupo = ?, activo = ? WHERE id = ?";
+        return "UPDATE `bd_grupos`.`grupo` SET cupo = ? WHERE id = ?";
     }
 
     @Override

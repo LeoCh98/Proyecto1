@@ -12,6 +12,7 @@ import com.progra.proyecto1.Data.Dao.StudentDAO;
 import com.progra.proyecto1.Data.RelDatabase;
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -84,8 +85,11 @@ public class Service {
     public void deleteStudent(String id) throws SQLException, IOException {
         studentDAO.delete(id);
     }
-    
+
     public void addGroupToStudent(Student value, int group_id) throws SQLException, IOException {
+        Group group = this.getGroupById(group_id);
+        group.decreaseCapacity();
+        this.updateGroup(group_id, group);
         studentDAO.addGroup(value, group_id);
     }
 

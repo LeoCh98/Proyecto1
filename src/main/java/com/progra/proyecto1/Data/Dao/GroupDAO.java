@@ -43,11 +43,8 @@ public class GroupDAO extends AbstractDAO<Integer, Group> implements DAO<Integer
 
     @Override
     public void setUpdateParameters(PreparedStatement stm, Integer id, Group value) throws SQLException {
-        stm.setInt(1, value.getSequence());
-        stm.setString(2, value.getName());
-        stm.setInt(3, value.getCapacity());
-        stm.setBoolean(4, value.isActive());
-        stm.setInt(5, id);
+        stm.setInt(1, value.getCapacity());
+        stm.setInt(2, id);
     }
 
     @Override

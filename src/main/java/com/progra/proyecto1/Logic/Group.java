@@ -26,7 +26,11 @@ public class Group {
         this.capacity = capacity;
         this.active = active;
     }
-
+    
+    public void decreaseCapacity(){
+        capacity--;
+    }
+    
     public int getId() {
         return id;
     }

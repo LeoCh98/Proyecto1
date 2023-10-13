@@ -10,7 +10,7 @@ package com.progra.proyecto1.Data.Dao.Crud;
  */
 public abstract class AbstractCRUD {
     
-    public abstract String updateProps();
+    public abstract String updateProps(); // Created to update unique property...
 
     public abstract String getListAllCmd();
 
