@@ -25,7 +25,18 @@
             <div class="group-container">
                 <% for (Group group : groups) { %>
                 <div class="group">
-                    <h2> Id: <%out.print(group.getId()); %> <%= group.getName() %></h2>
+                    <h2>
+                        Id: <%out.print(group.getId()); %> <%= group.getName() %>
+                        <a class="btn-group" href="/Proyecto1/Presentation/Login/Menu.jsp"> 
+                            <% if(model.getCurrentStudent().getGroup() != 0 ) { 
+                                if(model.getCurrentStudent().getGroup() == group.getId()) { %>
+                            <img style ="margin-left:240px;" src="/Proyecto1/Images/Leave.png" title="Leave this group">
+                            <% }
+                                    } else { %>
+                            <img style ="margin-left:240px;" src="/Proyecto1/Images/Join.png" title="Join this group">
+                            <% } %>
+                        </a>
+                    </h2>
                     <% if (students.isEmpty()) { %>
                     <p>No students available.</p>
                     <% } else { %>

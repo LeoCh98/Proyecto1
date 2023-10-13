@@ -122,6 +122,10 @@ footer {
     background-color: #00cccc;
 }
 
+.btn-group {
+    text-decoration: none;
+}
+
 .group-container {
     margin-top: 150px;
     display: flex;

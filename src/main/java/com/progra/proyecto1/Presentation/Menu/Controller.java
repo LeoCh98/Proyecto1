@@ -50,9 +50,11 @@ public class Controller extends HttpServlet {
     }
 
     public String showGroups(HttpServletRequest request) {
+        HttpSession session = request.getSession(true);
         Model model = (Model) request.getAttribute("model");
         Service service = Service.instance();
         try {
+            model.setCurrentStudent((Student) session.getAttribute("User"));
             model.setGroups(service.getAllGroups());
             model.setStudents(service.getAllStudents());
             return "/Presentation/Menu/Groups.jsp";
