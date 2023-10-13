@@ -9,6 +9,11 @@ package com.progra.proyecto1.Data.Dao.Crud;
  * @author leoch
  */
 public class StudentCRUD extends AbstractCRUD {
+    
+    @Override
+    public String updateProps(){
+        return "UPDATE `bd_grupos`.`estudiante` SET grupo_id=? WHERE id=?";
+    }
 
     @Override
     public String getListAllCmd() {

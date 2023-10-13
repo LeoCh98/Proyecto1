@@ -4,12 +4,15 @@
  */
 package com.progra.proyecto1.Presentation.Menu;
 
+import com.progra.proyecto1.Logic.Group;
 import com.progra.proyecto1.Logic.Service;
+import com.progra.proyecto1.Logic.Student;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.HashMap;
@@ -75,9 +78,16 @@ public class Controller extends HttpServlet {
 
     public String saveAction(HttpServletRequest request) {
         Model model = (Model) request.getAttribute("model");
+        HttpSession session = request.getSession(true);
         Service service = Service.instance();
         try {
-            service.addGroup(model.getCurrent());
+            model.setCurrentStudent((Student)session.getAttribute("User"));
+            Group group = service.addGroup(model.getCurrentGroup());
+            model.setGroups(service.getAllGroups());
+            
+            
+            service.addGroupToStudent(model.getCurrentStudent(), group.getId());
+            
             return "/Presentation/Login/Menu.jsp";
         } catch (IOException | SQLException ex) {
             Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);
@@ -107,7 +117,7 @@ public class Controller extends HttpServlet {
 
     void updateModel(HttpServletRequest request) {
         Model model = (Model) request.getAttribute("model");
-        model.getCurrent().setName((request.getParameter("groupNameFld")));
+        model.getCurrentGroup().setName((request.getParameter("groupNameFld")));
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

@@ -55,7 +55,7 @@
 
     private Map<String, String[]> getForm(Model model) {
         Map<String, String[]> values = new HashMap<>();
-        values.put("groupNameFld", new String[]{model.getCurrent().getName()});
+        values.put("groupNameFld", new String[]{model.getCurrentGroup().getName()});
         return values;
     }
 %> 

@@ -17,7 +17,8 @@ public class Model {
 
     List<Student> students;
     List<Group> groups;
-    Group current;
+    Student currentStudent;
+    Group currentGroup;
 
     public Model() {
         this.reset();
@@ -26,7 +27,7 @@ public class Model {
     public void reset() {
         List<Student> students = new ArrayList<>();
         this.setStudents(students);
-        setCurrent(new Group());
+        setCurrentGroup(new Group());
     }
 
     public List<Student> getStudents() {
@@ -45,11 +46,19 @@ public class Model {
         this.groups = groups;
     }
 
-    public Group getCurrent() {
-        return current;
+    public Student getCurrentStudent() {
+        return currentStudent;
     }
 
-    public void setCurrent(Group current) {
-        this.current = current;
+    public void setCurrentStudent(Student currentStudent) {
+        this.currentStudent = currentStudent;
+    }
+
+    public Group getCurrentGroup() {
+        return currentGroup;
+    }
+
+    public void setCurrentGroup(Group currentGroup) {
+        this.currentGroup = currentGroup;
     }
 }

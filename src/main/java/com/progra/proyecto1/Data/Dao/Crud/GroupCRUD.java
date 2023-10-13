@@ -9,6 +9,11 @@ package com.progra.proyecto1.Data.Dao.Crud;
  * @author leoch
  */
 public class GroupCRUD extends AbstractCRUD {
+    
+    @Override
+    public String updateProps(){
+        return "";
+    }
 
     @Override
     public String getListAllCmd() {

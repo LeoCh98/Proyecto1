@@ -5,7 +5,7 @@
    version="6.0">
     <session-config>
         <session-timeout>
-            30
+            5<!-- Por razones de tiempo no logré implementar de forma exacta el timeout -->
         </session-timeout>
     </session-config>
 </web-app>

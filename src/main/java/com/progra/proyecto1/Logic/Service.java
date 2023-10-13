@@ -84,16 +84,27 @@ public class Service {
     public void deleteStudent(String id) throws SQLException, IOException {
         studentDAO.delete(id);
     }
+    
+    public void addGroupToStudent(Student value, int group_id) throws SQLException, IOException {
+        studentDAO.addGroup(value, group_id);
+    }
 
     public List<Group> getAllGroups() throws SQLException, IOException {
         return groupDAO.listAll();
     }
 
-    public void addGroup(Group group) throws SQLException, IOException {
+    public Group addGroup(Group group) throws SQLException, IOException {
         groupDAO.add(group);
+        List<Group> groups = this.getAllGroups();
+        for (Group iter : groups) {
+            if (iter.getName().equals(group.getName())) {
+                return iter;
+            }
+        }
+        return null;
     }
 
-    public Group getGroupById(Integer id) throws SQLException, IOException {
+    public Group getGroupById(int id) throws SQLException, IOException {
         return groupDAO.retrieve(id);
     }
 

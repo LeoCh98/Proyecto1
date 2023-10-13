@@ -9,6 +9,8 @@ package com.progra.proyecto1.Data.Dao.Crud;
  * @author leoch
  */
 public abstract class AbstractCRUD {
+    
+    public abstract String updateProps();
 
     public abstract String getListAllCmd();
 
