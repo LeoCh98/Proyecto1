@@ -99,6 +99,7 @@ public class Service {
             studentDAO.addGroup(value, 0);
             Group group = this.getGroupById(group_id);
             group.increaseCapacity();
+            this.updateGroup(group_id, group);
             if( group.getCapacity() == 5 )
                 this.deleteGroup(group_id);
         }

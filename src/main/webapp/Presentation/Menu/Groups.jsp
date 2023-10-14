@@ -32,12 +32,17 @@
                         <a class="btn-group" href="Presentation/Group/Leave">
                             <img style ="margin-left:240px;" src="/Proyecto1/Images/Leave.png" title="Leave this group">
                         </a>
-                            <% }
-                                    } else { %>
-                        <a class="btn-group" href="/Proyecto1/Presentation/Login/Menu.jsp">
-                            <img style ="margin-left:240px;" src="/Proyecto1/Images/Join.png" title="Join this group">
-                        </a>
-                        <% } %>
+                        <% }
+                        } else { 
+                        if (group.getCapacity() > 0) {%>
+                        <form method="post" action="Presentation/Group/Join" class="btn-group-form">
+                            <input type="hidden" name="GroupId" value="<%= group.getId() %>">
+                            <button type="submit" class="btn-group-button">
+                                <img src="/Proyecto1/Images/Join.png" title="Join this group">
+                            </button>
+                        </form>
+                        <% }
+                            } %>
                     </h2>
                     <% if (students.isEmpty()) { %>
                     <p>No students available.</p>

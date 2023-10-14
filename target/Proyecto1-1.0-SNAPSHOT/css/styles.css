@@ -122,8 +122,22 @@ footer {
     background-color: #00cccc;
 }
 
-.btn-group {
-    text-decoration: none;
+.btn-group,
+.btn-group-form {
+    display: inline-block;
+}
+
+.btn-group-button {
+    background: none;
+    border: none;
+    padding: 0;
+    margin: 0;
+    cursor: pointer;
+    text-align: left;
+}
+
+.btn-group-button img {
+    margin-left: 240px;
 }
 
 .group-container {

@@ -24,7 +24,6 @@ import java.util.logging.Logger;
  *
  * @author leoch
  */
-
 @WebServlet(name = "ControllerMenu", urlPatterns = {"/Presentation/Menu/Create", "/Presentation/Menu/SaveGroup", "/Presentation/Menu/Groups", "/Presentation/Menu/Users", "/Presentation/Group/Join", "/Presentation/Group/Leave"})
 public class Controller extends HttpServlet {
 
@@ -47,13 +46,30 @@ public class Controller extends HttpServlet {
                 viewUrl = this.showUsers(request);
                 break;
             case "/Presentation/Group/Join":
-                //viewUrl = this.join(request);
+                viewUrl = this.join(request);
                 break;
             case "/Presentation/Group/Leave":
                 viewUrl = this.leave(request);
                 break;
         }
         request.getRequestDispatcher(viewUrl).forward(request, response);
+    }
+
+    public String join(HttpServletRequest request) {
+        HttpSession session = request.getSession(true);
+        Model model = (Model) request.getAttribute("model");
+        Student student = (Student) session.getAttribute("User");
+        Service service = Service.instance();
+        try {
+            Integer group_id = Integer.parseInt(request.getParameter("GroupId"));
+            service.addGroupToStudent(student, group_id);
+            student.setGroup(group_id);
+            session.setAttribute("User", student);
+            return this.showGroups(request);
+        } catch (IOException | SQLException ex) {
+            Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);
+            return "";
+        }
     }
 
     public String leave(HttpServletRequest request) {
