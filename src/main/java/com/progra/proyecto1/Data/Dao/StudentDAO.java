@@ -24,14 +24,15 @@ public class StudentDAO extends AbstractDAO<String, Student> implements DAO<Stri
     public StudentDAO(DataSource db, AbstractCRUD crud) {
         super(db, crud);
     }
-    
-    
 
     public void addGroup(Student value, int group_id) throws SQLException {
-        //String sql = "update `bd_grupos`.`estudiante` set grupo_id=? where id=?";
         try (Connection cnx = db.getConnection(); PreparedStatement stm = cnx.prepareStatement(getCRUD().updateProps())) {
             stm.clearParameters();
-            stm.setInt(1, group_id);
+            if (group_id != 0) {
+                stm.setInt(1, group_id);
+            } else {
+                stm.setNull(1, java.sql.Types.NULL);
+            }
             stm.setString(2, value.getId());
             if (stm.executeUpdate() != 1) {
                 throw new IllegalArgumentException(value.toString());

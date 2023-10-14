@@ -24,7 +24,8 @@ import java.util.logging.Logger;
  *
  * @author leoch
  */
-@WebServlet(name = "ControllerMenu", urlPatterns = {"/Presentation/Menu/Create", "/Presentation/Menu/SaveGroup", "/Presentation/Menu/Groups", "/Presentation/Menu/Users"})
+
+@WebServlet(name = "ControllerMenu", urlPatterns = {"/Presentation/Menu/Create", "/Presentation/Menu/SaveGroup", "/Presentation/Menu/Groups", "/Presentation/Menu/Users", "/Presentation/Group/Join", "/Presentation/Group/Leave"})
 public class Controller extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
@@ -45,19 +46,27 @@ public class Controller extends HttpServlet {
             case "/Presentation/Menu/Users":
                 viewUrl = this.showUsers(request);
                 break;
+            case "/Presentation/Group/Join":
+                //viewUrl = this.join(request);
+                break;
+            case "/Presentation/Group/Leave":
+                viewUrl = this.leave(request);
+                break;
         }
         request.getRequestDispatcher(viewUrl).forward(request, response);
     }
 
-    public String showGroups(HttpServletRequest request) {
+    public String leave(HttpServletRequest request) {
         HttpSession session = request.getSession(true);
         Model model = (Model) request.getAttribute("model");
+        Student student = (Student) session.getAttribute("User");
         Service service = Service.instance();
         try {
-            model.setCurrentStudent((Student) session.getAttribute("User"));
-            model.setGroups(service.getAllGroups());
-            model.setStudents(service.getAllStudents());
-            return "/Presentation/Menu/Groups.jsp";
+            service.leaveGroup(student);
+            student.setGroup(0);
+            model.getCurrentStudent().setGroup(0);
+            session.setAttribute("User", student);
+            return this.showGroups(request);
         } catch (IOException | SQLException ex) {
             Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);
             return "";
@@ -79,14 +88,35 @@ public class Controller extends HttpServlet {
     }
 
     public String saveAction(HttpServletRequest request) {
+        HttpSession session = request.getSession(true);
+        Model model = (Model) request.getAttribute("model");
+        Service service = Service.instance();
+        Student student = model.getCurrentStudent();
+        try {
+            Group group = service.addGroup(model.getCurrentGroup());
+            
+            model.setGroups(service.getAllGroups());
+            model.setStudents(service.getAllStudents());
+            
+            service.addGroupToStudent(model.getCurrentStudent(), group.getId());
+            student.setGroup(group.getId());
+            session.setAttribute("User", student);
+            return "/Presentation/Login/Menu.jsp";
+        } catch (IOException | SQLException ex) {
+            Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);
+            return "";
+        }
+    }
+
+    public String showGroups(HttpServletRequest request) {
+        HttpSession session = request.getSession(true);
         Model model = (Model) request.getAttribute("model");
         Service service = Service.instance();
         try {
-            Group group = service.addGroup(model.getCurrentGroup());
+            model.setCurrentStudent((Student) session.getAttribute("User"));
             model.setGroups(service.getAllGroups());
             model.setStudents(service.getAllStudents());
-            service.addGroupToStudent(model.getCurrentStudent(), group.getId());
-            return "/Presentation/Login/Menu.jsp";
+            return "/Presentation/Menu/Groups.jsp";
         } catch (IOException | SQLException ex) {
             Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);
             return "";
@@ -107,8 +137,10 @@ public class Controller extends HttpServlet {
     }
 
     public Map<String, String> checkErrors(HttpServletRequest request) {
+        HttpSession session = request.getSession(true);
         Map<String, String> errors = new HashMap<>();
         Model model = (Model) request.getAttribute("model");
+        model.setCurrentStudent((Student) session.getAttribute("User"));
         if (request.getParameter("groupNameFld").isEmpty()) {
             errors.put("groupNameFld", "Group Name required");
         }
@@ -123,7 +155,7 @@ public class Controller extends HttpServlet {
         model.getCurrentGroup().setName((request.getParameter("groupNameFld")));
     }
 
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
+// <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {

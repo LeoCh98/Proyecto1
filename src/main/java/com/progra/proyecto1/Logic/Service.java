@@ -92,6 +92,17 @@ public class Service {
         this.updateGroup(group_id, group);
         studentDAO.addGroup(value, group_id);
     }
+    
+    public void leaveGroup(Student value) throws SQLException, IOException{
+        int group_id = value.getGroup();
+        if( group_id != 0){
+            studentDAO.addGroup(value, 0);
+            Group group = this.getGroupById(group_id);
+            group.increaseCapacity();
+            if( group.getCapacity() == 5 )
+                this.deleteGroup(group_id);
+        }
+    }
 
     public List<Group> getAllGroups() throws SQLException, IOException {
         return groupDAO.listAll();

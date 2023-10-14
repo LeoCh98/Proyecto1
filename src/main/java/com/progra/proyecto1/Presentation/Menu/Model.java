@@ -25,9 +25,10 @@ public class Model {
     }
 
     public void reset() {
-        List<Student> students = new ArrayList<>();
-        this.setStudents(students);
-        setCurrentGroup(new Group());
+        students = new ArrayList<>();
+        groups = new ArrayList<>();
+        currentStudent = new Student();
+        currentGroup = new Group();
     }
 
     public List<Student> getStudents() {

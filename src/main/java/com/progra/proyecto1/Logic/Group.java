@@ -31,6 +31,10 @@ public class Group {
         capacity--;
     }
     
+    public void increaseCapacity(){
+        capacity++;
+    }
+    
     public int getId() {
         return id;
     }
