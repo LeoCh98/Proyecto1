@@ -16,9 +16,16 @@ import java.util.List;
 import javax.sql.DataSource;
 
 /**
- *
- * @author leoch
- */
+* -------------------------------------------------------------------
+*
+* (c) 2023
+*
+* @author: Leonardo Chaves Hernández
+*
+* @version 1.0.0 2023-10-14
+*
+* --------------------------------------------------------------------
+*/
 public class GroupDAO extends AbstractDAO<Integer, Group> implements DAO<Integer, Group> {
 
     public GroupDAO(DataSource db, AbstractCRUD crud) {

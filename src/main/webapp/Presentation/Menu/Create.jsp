@@ -1,8 +1,14 @@
-<%-- 
-    Document   : NewGroup
-    Created on : 7 Oct 2023, 00:22:45
-    Author     : leoch
---%>
+<!--
+ ===================================================================
+ *
+ * (c) 2023
+ *
+ * Leonardo Chaves Hernández
+ *
+ * version 1.0.0 2023-10-14
+ *
+ ===================================================================
+ -->
 <%@page import="com.progra.proyecto1.Presentation.Menu.Model"%>
 <%@page import="java.util.HashMap"%>
 <%@page import="java.util.Map"%>

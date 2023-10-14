@@ -1,8 +1,14 @@
-<%-- 
-    Document   : Header
-    Created on : 12 Sep 2023, 23:09:17
-    Author     : leoch
---%>
+<!--
+ ===================================================================
+ *
+ * (c) 2023
+ *
+ * Leonardo Chaves Hernández
+ *
+ * version 1.0.0 2023-10-14
+ *
+ ===================================================================
+ -->
 <%@page import="com.progra.proyecto1.Logic.Student"%>
 <%
     Student user = (Student) session.getAttribute("User");

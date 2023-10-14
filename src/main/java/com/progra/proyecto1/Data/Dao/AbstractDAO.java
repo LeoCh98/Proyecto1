@@ -16,9 +16,16 @@ import java.util.List;
 import javax.sql.DataSource;
 
 /**
- *
- * @author leoch
- */
+* -------------------------------------------------------------------
+*
+* (c) 2023
+*
+* @author: Leonardo Chaves Hernández
+*
+* @version 1.0.0 2023-10-14
+*
+* --------------------------------------------------------------------
+*/
 public abstract class AbstractDAO<K, V> implements DAO<K, V> {
 
     public AbstractDAO(DataSource db, AbstractCRUD crud) {

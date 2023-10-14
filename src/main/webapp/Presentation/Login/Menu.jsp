@@ -1,8 +1,14 @@
-<%-- 
-    Document   : View.jsp
-    Created on : 30 Sep 2023, 17:58:58
-    Author     : leoch
---%>
+<!--
+ ===================================================================
+ *
+ * (c) 2023
+ *
+ * Leonardo Chaves Hernández
+ *
+ * version 1.0.0 2023-10-14
+ *
+ ===================================================================
+ -->
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>

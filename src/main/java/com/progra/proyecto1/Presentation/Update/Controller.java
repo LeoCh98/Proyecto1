@@ -18,9 +18,16 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- *
- * @author leoch
- */
+* -------------------------------------------------------------------
+*
+* (c) 2023
+*
+* @author: Leonardo Chaves Hernández
+*
+* @version 1.0.0 2023-10-14
+*
+* --------------------------------------------------------------------
+*/
 @WebServlet(name = "ControllerUpdate", urlPatterns = {"/Presentation/Update/Show", "/Presentation/Update/Update"})
 public class Controller extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)

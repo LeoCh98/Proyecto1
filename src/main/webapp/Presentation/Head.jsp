@@ -1,8 +1,14 @@
-<%-- 
-    Document   : Head
-    Created on : 12 Sep 2023, 20:57:34
-    Author     : leoch
---%>
+<!--
+ ===================================================================
+ *
+ * (c) 2023
+ *
+ * Leonardo Chaves Hernández
+ *
+ * version 1.0.0 2023-10-14
+ *
+ ===================================================================
+ -->
 
 <base href="http://localhost:8080/Proyecto1/">
 <link rel="shortcut icon" href="/Proyecto1/Images/favicon.png" type="image/x-icon">

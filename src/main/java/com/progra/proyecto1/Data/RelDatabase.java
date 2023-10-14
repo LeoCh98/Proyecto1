@@ -11,9 +11,16 @@ import javax.naming.NamingException;
 import javax.sql.DataSource;
 
 /**
- *
- * @author leoch
- */
+* -------------------------------------------------------------------
+*
+* (c) 2023
+*
+* @author: Leonardo Chaves Hernández
+*
+* @version 1.0.0 2023-10-14
+*
+* --------------------------------------------------------------------
+*/
 public class RelDatabase extends MysqlDataSource {
 
     private RelDatabase() {

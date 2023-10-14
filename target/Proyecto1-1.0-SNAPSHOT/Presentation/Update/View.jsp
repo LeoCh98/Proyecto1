@@ -1,8 +1,14 @@
-<%-- 
-    Document   : Update
-    Created on : 1 Oct 2023, 23:18:00
-    Author     : leoch
---%>
+<!--
+ ===================================================================
+ *
+ * (c) 2023
+ *
+ * Leonardo Chaves Hernández
+ *
+ * version 1.0.0 2023-10-14
+ *
+ ===================================================================
+ -->
 <%@page import="com.progra.proyecto1.Presentation.Update.Model"%>
 <%@page import="java.util.HashMap"%>
 <%@page import="java.util.Map"%>

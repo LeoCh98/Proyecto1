@@ -14,15 +14,20 @@ import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import java.io.IOException;
 import java.sql.SQLException;
-import java.sql.Timestamp;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
 /**
- *
- * @author leoch
- */
+* -------------------------------------------------------------------
+*
+* (c) 2023
+*
+* @author: Leonardo Chaves Hernández
+*
+* @version 1.0.0 2023-10-14
+*
+* --------------------------------------------------------------------
+*/
 @WebServlet(name = "ControllerLogin", urlPatterns = {"/Presentation/Login/Show", "/Presentation/Login/Login", "/Presentation/Logout/Logout"})
 public class Controller extends HttpServlet {
 
@@ -68,7 +73,7 @@ public class Controller extends HttpServlet {
                 session.setAttribute("User", user);
                 return "/Presentation/Login/Menu.jsp";
             } else {
-                throw new RuntimeException(); //throws just in case incorrect login
+                throw new RuntimeException(); //Throws just in case incorrect login
             }
         } catch (IOException | RuntimeException | SQLException ex) {
             Map<String, String> errors = new HashMap<>();

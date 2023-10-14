@@ -12,16 +12,22 @@ import com.progra.proyecto1.Data.Dao.StudentDAO;
 import com.progra.proyecto1.Data.RelDatabase;
 import java.io.IOException;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.sql.DataSource;
 
 /**
- *
- * @author leoch
- */
+* -------------------------------------------------------------------
+*
+* (c) 2023
+*
+* @author: Leonardo Chaves Hernández
+*
+* @version 1.0.0 2023-10-14
+*
+* --------------------------------------------------------------------
+*/
 public class Service {
 
     private static Service uniqueInstance;

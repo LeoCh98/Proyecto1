@@ -21,9 +21,16 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
- *
- * @author leoch
- */
+* -------------------------------------------------------------------
+*
+* (c) 2023
+*
+* @author: Leonardo Chaves Hernández
+*
+* @version 1.0.0 2023-10-14
+*
+* --------------------------------------------------------------------
+*/
 @WebServlet(name = "ControllerMenu", urlPatterns = {"/Presentation/Menu/Create", "/Presentation/Menu/SaveGroup", "/Presentation/Menu/Groups", "/Presentation/Menu/Users", "/Presentation/Group/Join", "/Presentation/Group/Leave"})
 public class Controller extends HttpServlet {
 

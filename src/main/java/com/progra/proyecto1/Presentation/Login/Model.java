@@ -7,9 +7,16 @@ package com.progra.proyecto1.Presentation.Login;
 import com.progra.proyecto1.Logic.Student;
 
 /**
- *
- * @author leoch
- */
+* -------------------------------------------------------------------
+*
+* (c) 2023
+*
+* @author: Leonardo Chaves Hernández
+*
+* @version 1.0.0 2023-10-14
+*
+* --------------------------------------------------------------------
+*/
 public class Model {
     
     Student current;

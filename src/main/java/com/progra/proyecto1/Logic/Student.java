@@ -7,9 +7,16 @@ package com.progra.proyecto1.Logic;
 import java.sql.Timestamp;
 
 /**
- *
- * @author leoch
- */
+* -------------------------------------------------------------------
+*
+* (c) 2023
+*
+* @author: Leonardo Chaves Hernández
+*
+* @version 1.0.0 2023-10-14
+*
+* --------------------------------------------------------------------
+*/
 public class Student {
 
     private String id;

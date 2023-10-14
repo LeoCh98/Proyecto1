@@ -9,9 +9,16 @@ import java.sql.SQLException;
 import java.util.List;
 
 /**
- *
- * @author leoch
- */
+* -------------------------------------------------------------------
+*
+* (c) 2023
+*
+* @author: Leonardo Chaves Hernández
+*
+* @version 1.0.0 2023-10-14
+*
+* --------------------------------------------------------------------
+*/
 public interface DAO<K, V> { // Data Access Object (Interface)
 
     public List<V> listAll() throws SQLException, IOException;

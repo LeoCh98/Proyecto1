@@ -120,5 +120,3 @@ INSERT INTO `bd_grupos`.`estudiante`
 	('402610333', '53326', 'Vargas Camacho', 'Gerick Joel', '29', '402610333'),
 	('208200529', '53326', 'Vargas Ramírez', 'José Andrés', '30', '208200529')
 	;
-    
-    select * from general_estudiante;
